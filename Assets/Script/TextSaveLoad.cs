@@ -17,7 +17,14 @@ public class TextSaveLoad : MonoBehaviour
     {
         FileStream f = new FileStream(m_strPath + "MapData.txt", FileMode.CreateNew, FileAccess.Write);
         StreamWriter writer = new StreamWriter(f, System.Text.Encoding.Unicode);
-        writer.WriteLine(strData);
+        writer.Write(strData + " ");
+        writer.Close();
+    }
+    public void LineJump()
+    {
+        FileStream f = new FileStream(m_strPath + "MapData.txt", FileMode.CreateNew, FileAccess.Write);
+        StreamWriter writer = new StreamWriter(f, System.Text.Encoding.Unicode);
+        writer.WriteLine();
         writer.Close();
     }
 

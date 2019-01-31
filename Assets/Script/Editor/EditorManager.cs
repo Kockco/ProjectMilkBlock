@@ -34,7 +34,7 @@ public class EditorManager : MonoBehaviour
             {
                 Vector3 newPosition = new Vector3(j - (float)map_x / 2f, 0, i - (float)map_y / 2f); 
                 Tile tile = Instantiate(tileObject, newPosition, Quaternion.identity).GetComponent<Tile>();
-                tile.SetHeight(0);
+                tile.SetHight(0);
                 map[i][j] = tile;
             }
         }
@@ -51,7 +51,12 @@ public class EditorManager : MonoBehaviour
     }
     public void Save()
     {
-
+        TextSaveLoad Save = new TextSaveLoad();
+        for (int i = 0; i < map_y; i++) {
+            for (int j = 0; j < map_x; j++) {
+                Save.WriteData(map[j][i].GetHight);
+            }
+        }
     }
     public void Load()
     {
@@ -109,7 +114,7 @@ public class EditorManager : MonoBehaviour
                 int keyCode = i + 48;
                 if (Input.GetKeyDown((KeyCode)keyCode))
                 {
-                    SelectedTile.SetHeight(i);
+                    SelectedTile.SetHight(i);
                 }
             }
         }
